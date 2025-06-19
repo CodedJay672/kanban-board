@@ -23,7 +23,7 @@ const SortButton = () => {
         </div>
       </div>
 
-      <DropdownToggle open={open} onOpenChange={handleToggle}>
+      <DropdownToggle title="Sort" open={open} onOpenChange={handleToggle}>
         <DropdownMenuItem>Asc</DropdownMenuItem>
         <DropdownMenuItem>Desc</DropdownMenuItem>
       </DropdownToggle>
