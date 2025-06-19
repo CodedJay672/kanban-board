@@ -7,7 +7,7 @@ import { connectDB } from "../mongo-db/Db";
 export const createTask = async (
   data: Partial<Task>,
   status: string,
-  projectId?: String
+  projectId?: string
 ) => {
   if (!projectId) return false;
   try {
@@ -36,12 +36,12 @@ export const createTask = async (
   }
 };
 
-export const updateTaskStatus = async (taskId: string, newStatus: string) => {
-  try {
-    connectDB();
+// export const updateTaskStatus = async (taskId: string, newStatus: string) => {
+//   try {
+//     connectDB();
 
-    const task = await Projects.findById(taskId).exec();
-  } catch (error) {
-    throw error;
-  }
-};
+//     const task = await Projects.findById(taskId).exec();
+//   } catch (error) {
+//     throw error;
+//   }
+// };

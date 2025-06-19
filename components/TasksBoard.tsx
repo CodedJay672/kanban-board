@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import { DndContext, DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import ToDoTasks from "./ToDoTasks";
 import { useStore } from "@/lib/store/kanbanStore";
 
@@ -14,9 +14,9 @@ const TasksBoard = () => {
     if (!client) return;
 
     setClient(true);
-  }, []);
+  }, [client]);
 
-  const handleDragStart = (event: any) => {
+  const handleDragStart = (event: DragStartEvent) => {
     setDraggedId(event.active.id as string);
   };
 
@@ -27,11 +27,11 @@ const TasksBoard = () => {
 
     if (!over) return;
 
-    const activeId = active.id as String;
+    const activeId = active.id as string;
 
     setProject({
       ...project,
-      // @ts-ignore
+      // @ts-expect-error
       tasks: project?.tasks.map((task) =>
         task._id === activeId ? { ...task, status: over.id } : task
       ),

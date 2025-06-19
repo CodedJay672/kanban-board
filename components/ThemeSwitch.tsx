@@ -1,12 +1,11 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
 
 const ThemeSwitch = () => {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   return (
     <div className="w-full flex items-center gap-1 bg-gray-300 dark:bg-foreground-light overflow-hidden p-1 rounded-full">

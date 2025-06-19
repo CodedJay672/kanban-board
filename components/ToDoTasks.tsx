@@ -11,14 +11,14 @@ const ToDoTasks = ({ project }: { project: projectType | null }) => {
     if (!client) return;
 
     setClient(true);
-  }, []);
+  }, [client]);
 
   return (
     <section className="w-full rounded-xl flex justify-between gap-3 overflow-hidden min-h-[calc(100vh-125px)]">
       {COLUMNS.map((column) => (
         <Column
           key={column.id}
-          projectId={project?._id}
+          projectId={project?._id as string}
           tasks={project?.tasks.filter((item) => item.status === column.id)}
           id={column.id}
           title={column.title}

@@ -4,7 +4,6 @@ import { LayoutGridIcon } from "lucide-react";
 import AddButton from "./shared/AddButton";
 import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
-import DropdownToggle from "./shared/DropdownToggle";
 import Link from "next/link";
 
 const BoardMenu = () => {
@@ -18,7 +17,7 @@ const BoardMenu = () => {
           <LayoutGridIcon /> Board view
         </Button>
 
-        <AddButton label="Add view" />
+        <AddButton project="" status="" label="Add view" />
       </div>
 
       <div className="flex-center gap-3">

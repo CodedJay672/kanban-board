@@ -11,7 +11,7 @@ const Column = ({
   id,
   title,
 }: {
-  projectId: String | undefined;
+  projectId: string | undefined;
   tasks: Task[] | undefined;
   id: string;
   title: string;

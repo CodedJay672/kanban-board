@@ -7,7 +7,6 @@ import { MoreHorizontalIcon } from "lucide-react";
 
 const SortButton = () => {
   const [open, setOpen] = useState(false);
-  const [sort, setSort] = useState("asc");
 
   const handleToggle = () => {
     setOpen((prev) => !prev);

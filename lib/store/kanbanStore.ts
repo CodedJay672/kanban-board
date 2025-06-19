@@ -16,12 +16,12 @@ export const useStore = create<TProjectState>()(
       (set) => ({
         project: null,
         setProject: (data) =>
-          set((state) => ({
+          set(() => ({
             project: data,
           })),
 
         draggedId: "",
-        setDraggedId: (data) => set((state) => ({ draggedId: data })),
+        setDraggedId: (data) => set(() => ({ draggedId: data })),
       }),
       {
         name: "kanban",
