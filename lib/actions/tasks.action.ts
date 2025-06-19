@@ -36,6 +36,29 @@ export const createTask = async (
   }
 };
 
+export const deleteTask = async (projectId?: string, taskId?: string) => {
+  console.log(projectId, taskId);
+  try {
+    if (!projectId || !taskId) return;
+
+    connectDB();
+
+    const project = await Projects.findById(projectId).exec();
+
+    if (!project) throw new Error("Project not found");
+
+    //filter the tasks to remove the deleted task
+    const tasks = project.tasks.filter((item: Task) => item._id !== taskId);
+
+    project.tasks = tasks;
+    await project.save();
+
+    revalidatePath("/");
+  } catch (error) {
+    throw error;
+  }
+};
+
 // export const updateTaskStatus = async (taskId: string, newStatus: string) => {
 //   try {
 //     connectDB();

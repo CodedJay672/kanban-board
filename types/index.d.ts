@@ -2,7 +2,7 @@ type Task = {
   _id: string;
   title: String;
   description: String;
-  Assignees: ObjectId;
+  assignees: ObjectId;
   progress: Number;
   status: String;
   createdAt: Date;

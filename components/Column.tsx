@@ -39,7 +39,9 @@ const Column = ({
             progress={item.progress as number}
             status={item.status as string}
             createdAt={item.createdAt}
+            projectId={projectId}
             id={item._id}
+            assignees={item.assignees}
           />
         ))}
       </div>
