@@ -88,8 +88,10 @@ const TaskCard = ({
         </div>
         <div className="w-full bg-foreground/10 mt-2.5 rounded-full">
           <div
-            style={{ width: `${progress}` }}
-            className="bg-progress p-0.5 rounded-full"
+            style={{ width: status === "Done" ? "100px" : `${progress * 10}%` }}
+            className={cn("bg-progress p-0.5 rounded-full", {
+              "bg-done": status === "Done",
+            })}
           />
         </div>
       </div>

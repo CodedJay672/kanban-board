@@ -17,7 +17,7 @@ const SideDropdown = ({
 
   useEffect(() => {
     setProject(data[0]);
-  }, [project]);
+  }, []);
 
   const toggleState = () => {
     setIsOpen((prev) => !prev);
