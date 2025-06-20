@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
+import { ChevronDownIcon, ChevronRightIcon, TrashIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/lib/store/kanbanStore";
+import { deleteProjectById } from "@/lib/actions/projects.actions";
+import { toast } from "sonner";
 
 const SideDropdown = ({
   label,
@@ -27,6 +29,17 @@ const SideDropdown = ({
     return item.title === project?.title;
   };
 
+  const deleteProject = async (id: string) => {
+    try {
+      const isDeleted = await deleteProjectById(id);
+
+      if (!isDeleted) return toast.error("Failed. Try again.");
+
+      toast.success("Project deleted");
+    } catch (error) {
+      throw error;
+    }
+  };
   return (
     <>
       <div
@@ -70,29 +83,37 @@ const SideDropdown = ({
           {data &&
             data.length > 0 &&
             data.map((item, idx) => (
-              <div key={idx} className="flex items-center">
-                <div className="h-12 border border-gray dark:border-gray-700" />
-                <div className="w-[24px] border border-gray dark:border-gray-700" />
-                <div
-                  onClick={() => setProject(item)}
-                  className={cn(
-                    "py-1 px-5 rounded-full ml-2 select-none cursor-pointer",
-                    {
-                      "bg-dark-1/4 dark:bg-foreground/4": isActive(item),
-                    }
-                  )}
-                >
-                  <p
+              <div key={idx} className="flex items-center gap-5">
+                <div className="flex items-center">
+                  <div className="h-12 border border-gray dark:border-gray-700" />
+                  <div className="w-[24px] border border-gray dark:border-gray-700" />
+                  <div
+                    onClick={() => setProject(item)}
                     className={cn(
-                      "text-foreground/50 font-exo font-semibold capitalize tansition-all",
+                      "py-1 px-5 rounded-full ml-2 select-none cursor-pointer",
                       {
-                        "text-foreground font-bold": isActive(item),
+                        "bg-dark-1/4 dark:bg-foreground/4": isActive(item),
                       }
                     )}
                   >
-                    {item.title}
-                  </p>
+                    <p
+                      className={cn(
+                        "text-foreground/50 font-exo font-semibold capitalize tansition-all",
+                        {
+                          "text-foreground font-bold": isActive(item),
+                        }
+                      )}
+                    >
+                      {item.title}
+                    </p>
+                  </div>
                 </div>
+
+                <TrashIcon
+                  size={20}
+                  onClick={() => deleteProject(item._id as string)}
+                  className="text-dark-3 dark:text-foreground/50 cursor-pointer"
+                />
               </div>
             ))}
         </div>

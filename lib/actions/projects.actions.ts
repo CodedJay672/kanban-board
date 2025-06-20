@@ -34,3 +34,18 @@ export const getAllProjects = cache(async (userId: string) => {
     throw error;
   }
 });
+
+export const deleteProjectById = async (projectId: string) => {
+  try {
+    const res = (await Projects.findByIdAndDelete(
+      projectId
+    ).exec()) as projectType;
+
+    if (!res) throw new Error("Failed to delete");
+
+    revalidatePath("/");
+    return JSON.parse(JSON.stringify(res));
+  } catch (error) {
+    throw error;
+  }
+};
