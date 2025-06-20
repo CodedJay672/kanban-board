@@ -49,7 +49,10 @@ const TaskCard = ({
 
   const formattedDate = dayjs(createdAt).format("DD MMM YYYY").toLowerCase();
 
-  const { attributes, setNodeRef, listeners, transform } = useDraggable({ id });
+  const { attributes, setNodeRef, listeners, transform } = useDraggable({
+    id,
+    disabled: open ? true : false,
+  });
 
   const style = {
     transform: CSS.Translate.toString(transform),
@@ -79,7 +82,7 @@ const TaskCard = ({
           }
         )}
       >
-        <div className="flex-between">
+        <div className="flex-between gap-4">
           <div>
             <h3 className="text-base font-bold text-foreground">{title}</h3>
             <p className="text-sm font-medium text-foreground/50">
@@ -97,27 +100,34 @@ const TaskCard = ({
               align="end"
               className="bg-background/40 dark:bg-dark-2 border-none"
             >
-              <DropdownMenuItem className="text-sm text-foreground dark:text-foreground/80 w-full hover:bg-transparent dark:hover:bg-transparent cursor-pointer">
-                <Button
-                  variant="ghost"
-                  onClick={() => setOpen(true)}
-                  className="w-full hover:bg-background/20 dark:hover:bg-foreground/10"
+              <div>
+                <DropdownMenuItem
+                  asChild
+                  className="text-sm text-foreground dark:text-foreground/80 w-full hover:bg-transparent dark:hover:bg-transparent cursor-pointer"
                 >
-                  Edit
-                </Button>
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                asChild
-                className="text-sm text-red-400 w-full hover:bg-transparent dark:hover:bg-transparent cursor-pointer"
-              >
-                <Button
-                  variant="ghost"
-                  onClick={handleDelete}
-                  className="w-full hover:bg-background/20 dark:hover:bg-foreground/10"
+                  <Button
+                    variant="ghost"
+                    onPointerDown={(e) => e.stopPropagation()}
+                    onClick={() => setOpen(true)}
+                    className="w-full hover:bg-background/20 dark:hover:bg-foreground/10"
+                  >
+                    Edit
+                  </Button>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  asChild
+                  className="text-sm text-red-400 w-full hover:bg-transparent dark:hover:bg-transparent cursor-pointer"
                 >
-                  Delete
-                </Button>
-              </DropdownMenuItem>
+                  <Button
+                    variant="ghost"
+                    onPointerDown={(e) => e.stopPropagation()}
+                    onClick={handleDelete}
+                    className="w-full hover:bg-background/20 dark:hover:bg-foreground/10"
+                  >
+                    Delete
+                  </Button>
+                </DropdownMenuItem>
+              </div>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -161,10 +171,13 @@ const TaskCard = ({
               </div>
             ) : (
               <div className="flex-center gap-2">
-                <span className="text-sm flex-center gap-1.5 text-background/50 dark:text-foreground/50">
+                <span
+                  onClick={() => console.log("hello world")}
+                  className="text-sm flex-center gap-1.5 text-foreground/50 dark:text-foreground/50"
+                >
                   <MessageSquareTextIcon size={14} /> 0
                 </span>
-                <span className="text-sm flex-center gap-1.5 text-background/50 dark:text-foreground/50">
+                <span className="text-sm flex-center gap-1.5 text-foreground/50 dark:text-foreground/50">
                   <PaperclipIcon size={14} /> 0
                 </span>
               </div>

@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import Projects from "../models/Projects";
 import { connectDB } from "../mongo-db/Db";
+import { ObjectId } from "mongodb";
 
 export const createTask = async (
   data: Partial<Task>,
@@ -37,7 +38,6 @@ export const createTask = async (
 };
 
 export const deleteTask = async (projectId?: string, taskId?: string) => {
-  console.log(projectId, taskId);
   try {
     if (!projectId || !taskId) return;
 
@@ -48,12 +48,14 @@ export const deleteTask = async (projectId?: string, taskId?: string) => {
     if (!project) throw new Error("Project not found");
 
     //filter the tasks to remove the deleted task
-    const tasks = project.tasks.filter((item: Task) => item._id !== taskId);
+    const tasks = project.tasks.filter(
+      (item: Task) => item._id.toString() !== taskId
+    ) as Task[];
 
     project.tasks = tasks;
     await project.save();
 
-    revalidatePath("/");
+    revalidatePath("/", "page");
   } catch (error) {
     throw error;
   }

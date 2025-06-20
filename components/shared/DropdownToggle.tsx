@@ -18,9 +18,8 @@ const DropdownToggle = ({
 }) => {
   return (
     <DropdownMenu open={open} onOpenChange={onOpenChange}>
-      <DropdownMenuContent align="start" asChild className="w-44">
+      <DropdownMenuContent align="start" className="w-44">
         <DropdownMenuLabel>{title}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
         {children}
       </DropdownMenuContent>
     </DropdownMenu>

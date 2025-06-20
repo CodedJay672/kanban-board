@@ -3,6 +3,7 @@ type Task = {
   title: String;
   description: String;
   assignees: ObjectId;
+  priority: String;
   progress: Number;
   status: String;
   createdAt: Date;

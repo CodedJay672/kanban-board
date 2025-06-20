@@ -11,6 +11,7 @@ const projectSchema = new Schema({
       title: String,
       description: String,
       assignees: String,
+      priority: String,
       progress: Number,
       status: {
         type: String,

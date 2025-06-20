@@ -62,6 +62,38 @@ const AddButton = ({
 
             <div className="flex flex-col gap-3">
               <label
+                htmlFor="priority"
+                className="text-base text-foreground dark:text-gray-light font-medium"
+              >
+                Priority
+              </label>
+              <select
+                id="priority"
+                name="priority"
+                className="w-full p-3 bg-dark-3"
+              >
+                <option
+                  value="low"
+                  className="hover:bg-foreground/50 dark:bg-background/10 transition-all"
+                >
+                  Low
+                </option>
+                <option
+                  value="medium"
+                  className="hover:bg-foreground/50 dark:bg-background/10 transition-all"
+                >
+                  Medium
+                </option>
+                <option
+                  value="high"
+                  className="hover:bg-foreground/50 dark:bg-background/10 transition-all"
+                >
+                  High
+                </option>
+              </select>
+            </div>
+            <div className="flex flex-col gap-3">
+              <label
                 htmlFor="description"
                 className="text-base text-foreground dark:text-gray-light font-medium"
               >
@@ -71,7 +103,7 @@ const AddButton = ({
                 id="description"
                 name="description"
                 placeholder="Simple task description..."
-                rows={6}
+                rows={3}
                 className="w-full p-3 border border-gray text-foreground dark:text-foreground/80 dark:border-gray-light outline-none rounded-lg resize-none"
               />
             </div>
