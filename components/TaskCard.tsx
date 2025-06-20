@@ -110,7 +110,7 @@ const TaskCard = ({
                     variant="ghost"
                     onPointerDown={(e) => e.stopPropagation()}
                     onClick={() => setOpen(true)}
-                    className="w-full hover:bg-background/20 dark:hover:bg-foreground/10"
+                    className="w-full hover:bg-background dark:hover:bg-foreground/10"
                   >
                     Edit
                   </Button>

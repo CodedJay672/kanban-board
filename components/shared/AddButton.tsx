@@ -105,7 +105,7 @@ const AddButton = ({
                 <select
                   id="priority"
                   name="priority"
-                  className="w-full p-3 bg-dark-3"
+                  className="w-full p-3 bg-background dark:bg-dark-3"
                 >
                   <option
                     value="low"
