@@ -41,6 +41,8 @@ export const createTask = async (
 
 export const getTask = cache(async (id: string, projectId?: string) => {
   try {
+    connectDB();
+
     if (!projectId) throw new Error("No projectId.");
 
     const project = (await Projects.findById(projectId).exec()) as projectType;
@@ -102,7 +104,18 @@ export const updateTaskDetails = async (
     if (!project) throw new Error("Project not found.");
 
     const newTasks = project.tasks.map((item: Task) =>
-      item._id.toString() === taskId ? { ...item, ...data } : item
+      item._id.toString() === taskId
+        ? {
+            ...item,
+            ...data,
+            status:
+              item.progress < data.progress && Number(data.progress) < 100
+                ? "InProgress"
+                : item.progress === 100
+                ? "Done"
+                : "ToDo",
+          }
+        : item
     );
 
     project.tasks = newTasks;

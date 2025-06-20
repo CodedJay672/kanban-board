@@ -37,6 +37,8 @@ export const getAllProjects = cache(async (userId: string) => {
 
 export const deleteProjectById = async (projectId: string) => {
   try {
+    connectDB();
+
     const res = (await Projects.findByIdAndDelete(
       projectId
     ).exec()) as projectType;
