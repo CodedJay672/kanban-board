@@ -99,7 +99,7 @@ const TaskCard = ({
             </DropdownMenuTrigger>
             <DropdownMenuContent
               align="end"
-              className="bg-background/40 dark:bg-dark-2 border-none"
+              className="bg-background dark:bg-dark-2 border-none"
             >
               <div>
                 <DropdownMenuItem
