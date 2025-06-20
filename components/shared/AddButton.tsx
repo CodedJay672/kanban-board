@@ -95,7 +95,7 @@ const AddButton = ({
                 setValue={setAssignees}
               />
 
-              <div className="flex flex-col gap-3">
+              <div className="w-full flex flex-col gap-3">
                 <label
                   htmlFor="priority"
                   className="text-base text-foreground dark:text-gray-light font-medium"
