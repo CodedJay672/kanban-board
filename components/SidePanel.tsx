@@ -8,10 +8,10 @@ const SidePanel = () => {
       <div className="w-full flex-center gap-2">
         <div className="size-1.5 rounded-full bg-background dark:bg-foreground" />
         <div className="size-1.5 rounded-full bg-background/40 dark:bg-gray-light" />
-        <div className="size-1.5 rounded-full bg-background/20 dark:bg-dark-3" />
+        <div className="size-1.5 rounded-full bg-background/40 dark:bg-foreground/40" />
       </div>
 
-      <Link href="/" className="p-1 size-8 relative mt-10 mb-9">
+      <Link href="/" className="p-1 size-5 relative mt-10 mb-9">
         <Image
           src="/assets/Logo.png"
           alt="Kanban pro"
@@ -28,9 +28,9 @@ const SidePanel = () => {
           <Image
             src="/assets/dashboard.png"
             alt="dashboard"
-            width={22}
-            height={22}
-            className="w-[22px] h-[22px] object-contain"
+            width={18}
+            height={18}
+            className="w-[18px] h-[18px] object-contain"
           />
         </Link>
         <Link
@@ -40,10 +40,10 @@ const SidePanel = () => {
           <Image
             src="/person.png"
             alt="user"
-            width={22}
-            height={22}
+            width={18}
+            height={18}
             color="#292b31"
-            className="w-[22px] h-[22px] object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </Link>
         <Link
@@ -53,10 +53,10 @@ const SidePanel = () => {
           <Image
             src="/calendar.png"
             alt="calendar"
-            width={22}
-            height={22}
+            width={18}
+            height={18}
             color="#292b31"
-            className="w-[22px] h-[22px] object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </Link>
         <Link
@@ -66,10 +66,10 @@ const SidePanel = () => {
           <Image
             src="/stats.png"
             alt="stats"
-            width={22}
-            height={22}
+            width={18}
+            height={18}
             color="#292b31"
-            className="w-[22px] h-[22px] object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </Link>
         <Link
@@ -79,10 +79,10 @@ const SidePanel = () => {
           <Image
             src="/upload.png"
             alt="upload"
-            width={22}
-            height={22}
+            width={18}
+            height={18}
             color="#292b31"
-            className="w-[22px] h-[22px] object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </Link>
         <Link
@@ -92,10 +92,10 @@ const SidePanel = () => {
           <Image
             src="/details.png"
             alt="details"
-            width={22}
-            height={22}
+            width={18}
+            height={18}
             color="#292b31"
-            className="w-[22px] h-[22px] object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </Link>
         <Link
@@ -105,10 +105,10 @@ const SidePanel = () => {
           <Image
             src="/settings.png"
             alt="settings"
-            width={22}
-            height={22}
+            width={18}
+            height={18}
             color="#292b31"
-            className="w-[22px] h-[22px] object-contain"
+            className="w-[18px] h-[18px] object-contain"
           />
         </Link>
       </div>
@@ -117,10 +117,10 @@ const SidePanel = () => {
         <Image
           src="/logout.png"
           alt="logout"
-          width={22}
-          height={22}
+          width={18}
+          height={18}
           color="#292b31"
-          className="w-[22px] h-[22px] object-contain"
+          className="w-[18px] h-[18px] object-contain"
         />
       </div>
     </nav>
