@@ -19,6 +19,10 @@ const AddButton = ({
   status: string;
 }) => {
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [assignees, setAssignees] = useState("");
+  const [priority, setPriority] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -56,42 +60,14 @@ const AddButton = ({
             New Task
           </h2>
           <form onSubmit={handleSubmit} className="space-y-6 mt-6">
-            <CustomInput id="title" name="title" label="Title" />
+            <CustomInput
+              id="title"
+              name="title"
+              label="Title"
+              value={title}
+              setValue={setTitle}
+            />
 
-            <CustomInput id="assignees" name="assignees" label="Assignees" />
-
-            <div className="flex flex-col gap-3">
-              <label
-                htmlFor="priority"
-                className="text-base text-foreground dark:text-gray-light font-medium"
-              >
-                Priority
-              </label>
-              <select
-                id="priority"
-                name="priority"
-                className="w-full p-3 bg-dark-3"
-              >
-                <option
-                  value="low"
-                  className="hover:bg-foreground/50 dark:bg-background/10 transition-all"
-                >
-                  Low
-                </option>
-                <option
-                  value="medium"
-                  className="hover:bg-foreground/50 dark:bg-background/10 transition-all"
-                >
-                  Medium
-                </option>
-                <option
-                  value="high"
-                  className="hover:bg-foreground/50 dark:bg-background/10 transition-all"
-                >
-                  High
-                </option>
-              </select>
-            </div>
             <div className="flex flex-col gap-3">
               <label
                 htmlFor="description"
@@ -102,10 +78,55 @@ const AddButton = ({
               <textarea
                 id="description"
                 name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 placeholder="Simple task description..."
                 rows={3}
                 className="w-full p-3 border border-gray text-foreground dark:text-foreground/80 dark:border-gray-light outline-none rounded-lg resize-none"
               />
+            </div>
+
+            <div className="flex-between gap-3">
+              <CustomInput
+                id="assignees"
+                name="assignees"
+                label="Assignees"
+                value={assignees}
+                setValue={setAssignees}
+              />
+
+              <div className="flex flex-col gap-3">
+                <label
+                  htmlFor="priority"
+                  className="text-base text-foreground dark:text-gray-light font-medium"
+                >
+                  Priority
+                </label>
+                <select
+                  id="priority"
+                  name="priority"
+                  className="w-full p-3 bg-dark-3"
+                >
+                  <option
+                    value="low"
+                    className="hover:bg-foreground/50 dark:bg-background/10 transition-all"
+                  >
+                    Low
+                  </option>
+                  <option
+                    value="medium"
+                    className="hover:bg-foreground/50 dark:bg-background/10 transition-all"
+                  >
+                    Medium
+                  </option>
+                  <option
+                    value="high"
+                    className="hover:bg-foreground/50 dark:bg-background/10 transition-all"
+                  >
+                    High
+                  </option>
+                </select>
+              </div>
             </div>
 
             <SubmitButton label="Create Task" />

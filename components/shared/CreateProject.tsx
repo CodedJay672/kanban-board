@@ -11,6 +11,7 @@ import { toast } from "sonner";
 
 const CreateProject = () => {
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,7 +44,13 @@ const CreateProject = () => {
             New project
           </h2>
           <form onSubmit={handleSubmit} className="space-y-6 mt-6">
-            <CustomInput id="title" name="title" label="Project title" />
+            <CustomInput
+              id="title"
+              name="title"
+              label="Project title"
+              value={title}
+              setValue={setTitle}
+            />
 
             <SubmitButton label="Create Project" />
           </form>
