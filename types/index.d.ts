@@ -7,6 +7,7 @@ type Task = {
   progress: Number;
   status: String;
   createdAt: Date;
+  updatedAt: Date;
 };
 
 type projectType = {

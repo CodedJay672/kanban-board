@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import Projects from "../models/Projects";
 import { connectDB } from "../mongo-db/Db";
+import { cache } from "react";
 
 export async function createProject(projectTitle: string) {
   try {
@@ -22,7 +23,7 @@ export async function createProject(projectTitle: string) {
   }
 }
 
-export async function getAllProjects(userId: string) {
+export const getAllProjects = cache(async (userId: string) => {
   try {
     connectDB();
 
@@ -32,4 +33,4 @@ export async function getAllProjects(userId: string) {
   } catch (error) {
     throw error;
   }
-}
+});

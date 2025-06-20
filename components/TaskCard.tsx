@@ -24,6 +24,7 @@ import { toast } from "sonner";
 import CustomDialog from "./shared/CustomDialog";
 import SubmitButton from "./shared/SubmitButton";
 import CustomInput from "./shared/CustomInput";
+import UpdateTaskForm from "./UpdateTaskForm";
 
 const TaskCard = ({
   title,
@@ -141,13 +142,13 @@ const TaskCard = ({
               </span>
             </div>
             <span className="text-sm text-foreground font-semibold">
-              {progress}/10
+              {status === "Done" ? 10 : Math.round(progress / 10)}/10
             </span>
           </div>
           <div className="w-full bg-foreground/10 mt-2.5 rounded-full">
             <div
               style={{
-                width: status === "Done" ? "100%" : `${progress * 10}%`,
+                width: status === "Done" ? "100%" : `${Math.round(progress)}%`,
               }}
               className={cn("bg-progress p-0.5 rounded-full transition-all", {
                 "bg-done": status === "Done",
@@ -187,16 +188,7 @@ const TaskCard = ({
       </article>
 
       <CustomDialog title="projects" open={open} toggleOpen={setOpen}>
-        <div className="w-full bg-background/10 dark:bg-foregound-light">
-          <h2 className="text-xl font-bold text-foreground dark:text-foreground">
-            New project
-          </h2>
-          <form className="space-y-6 mt-6">
-            <CustomInput id="title" name="title" label="Project title" />
-
-            <SubmitButton label="Create Project" />
-          </form>
-        </div>
+        <UpdateTaskForm projectId={projectId} taskId={id} />
       </CustomDialog>
     </>
   );

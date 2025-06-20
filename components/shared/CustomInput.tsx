@@ -1,18 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Dispatch, useState } from "react";
 
 const CustomInput = ({
   label,
   id,
   name,
+  value,
+  setValue,
 }: {
   label: string;
   id: string;
   name: string;
+  value: string;
+  setValue: Dispatch<string>;
 }) => {
-  const [details, setDetails] = useState("");
-
   return (
     <div className="w-full flex flex-col space-y-2">
       <label
@@ -24,8 +26,8 @@ const CustomInput = ({
       <input
         id={id}
         name={name}
-        value={details}
-        onChange={(e) => setDetails(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         required
         className="w-full p-3 border border-gray text-foreground dark:text-foreground/80 dark:border-gray-light outline-none rounded-lg"
       />

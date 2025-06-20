@@ -13,6 +13,8 @@ const projectSchema = new Schema({
       assignees: String,
       priority: String,
       progress: Number,
+      createdAt: Date,
+      updatedAt: Date,
       status: {
         type: String,
         enum: ["ToDo", "InProgress", "Done"],
